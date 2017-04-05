@@ -11,13 +11,12 @@
                 $url = base_url('read/' . $val['id_post'] . '/' . $val['seotitle']);
                 ?>
                 <?php if ($no <= 2) { ?>
-                    <div id="<?php echo $no; ?>" class="feat-bx-sm">                
-                        <?php if (!empty($val['image'])) { ?>   
+                    <div id="<?php echo $no; ?>" class="feat-bx-sm">        
+
+                        <?php if (!empty($val['image']) && file_exists($val['image'])) { ?>   
                             <img src="<?php echo base_url('assets/picture/thumb/' . $val['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $val['image'] . ''); ?>" class="featimg " alt="<?php echo $val['seotitle']; ?>"/>
                         <?php } elseif (!empty($val['video'])) { ?>                                
                             <img src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" class="featimg " alt="<?php echo $val['seotitle']; ?>">
-                        <?php } elseif (!file_exists($val['image']) || !file_exists($val['video'])) { ?>   
-                            <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
                         <?php } else { ?>
                             <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
                         <?php } ?>
@@ -52,7 +51,7 @@
                                 $this->db->where('id_reg', $val['id_reg']);
                                 $query = $this->db->get();
                                 if ($query->row('picture') != "") {
-                                    if (!file_exists($query->row('picture'))) {
+                                    if (file_exists($query->row('picture'))) {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                     } else {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
@@ -110,12 +109,10 @@
                         ?>
                         <?php if ($no <= 5) { ?>
                             <li id="<?php echo $no; ?>"> 
-                                <?php if (!empty($val['image'])) { ?>   
+                                <?php if (!empty($val['image']) && file_exists($val['image'])) { ?>   
                                     <img src="<?php echo base_url('assets/picture/medium/' . $val['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/medium/' . $val['image'] . ''); ?>" class="img-card " alt="<?php echo $val['seotitle']; ?>"/>
                                 <?php } elseif (!empty($val['video'])) { ?>                                
                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" class="img-card " alt="<?php echo $val['seotitle']; ?>">
-                                <?php } elseif (!file_exists($val['image']) || !file_exists($val['video'])) { ?>   
-                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
                                 <?php } else { ?>
                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
                                 <?php } ?>
@@ -134,7 +131,7 @@
                                         $this->db->where('id_reg', $val['id_reg']);
                                         $query = $this->db->get();
                                         if ($query->row('picture') != "") {
-                                            if (!file_exists($query->row('picture'))) {
+                                            if (file_exists($query->row('picture'))) {
                                                 echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                             } else {
                                                 echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
@@ -182,12 +179,11 @@
                 ?>
                 <?php if ($no >= 3 && $no < 5) { ?>
                     <div id="<?php echo $no; ?>" class="feat-bx-sm">					
-                        <?php if (!empty($val['image'])) { ?>   
+                        <?php if (!empty($val['image']) && file_exists($val['image'])) { ?>   
                             <img src="<?php echo base_url('assets/picture/thumb/' . $val['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $val['image'] . ''); ?>" class="featimg " alt="<?php echo $val['seotitle']; ?>"/>
                         <?php } elseif (!empty($val['video'])) { ?>                                
                             <img src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" class="featimg " alt="<?php echo $val['seotitle']; ?>">
-                        <?php } elseif (!file_exists($val['image']) || !file_exists($val['video'])) { ?>   
-                            <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
+
                         <?php } else { ?>
                             <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
                         <?php } ?>					
@@ -220,7 +216,7 @@
                                 $this->db->where('id_reg', $val['id_reg']);
                                 $query = $this->db->get();
                                 if ($query->row('picture') != "") {
-                                    if (!file_exists($query->row('picture'))) {
+                                    if (file_exists($query->row('picture'))) {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                     } else {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
@@ -262,12 +258,10 @@
                 ?>
                     <?php if ($no >= 5 && $no < 7) { ?>
                     <div id="<?php echo $no; ?>" class="feat-bx-sm">        
-                        <?php if (!empty($val['image'])) { ?>   
+                        <?php if (!empty($val['image']) && file_exists($val['image'])) { ?>   
                             <img src="<?php echo base_url('assets/picture/thumb/' . $val['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $val['image'] . ''); ?>" class="featimg " alt="<?php echo $val['seotitle']; ?>"/>
                         <?php } elseif (!empty($val['video'])) { ?>                                
                             <img src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $val['video'] . '/0.jpg'); ?>" class="featimg " alt="<?php echo $val['seotitle']; ?>">
-                        <?php } elseif (!file_exists($val['image']) || !file_exists($val['video'])) { ?>   
-                            <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
                         <?php } else { ?>
                             <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="featimg "/>
         <?php } ?>	
@@ -300,7 +294,7 @@
                                 $this->db->where('id_reg', $val['id_reg']);
                                 $query = $this->db->get();
                                 if ($query->row('picture') != "") {
-                                    if (!file_exists($query->row('picture'))) {
+                                    if (file_exists($query->row('picture'))) {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                     } else {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg'] . '') . '"><img class="circle usr-feat" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';

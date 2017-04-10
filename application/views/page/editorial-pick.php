@@ -13,7 +13,7 @@
                 <div class="col s12 m3">
                     <div class="card-tm1 white">
                         <div class="feat-bx-sm"> 						
-                            <?php if (!empty($pick['image']) && file_exists($pick['image'])) { ?>   
+                            <?php if (!empty($pick['image'])) { ?>   
                                 <img src="<?php echo base_url('assets/picture/thumb/' . $pick['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $pick['image'] . ''); ?>" class="img-card " alt="<?php echo $pick['seotitle']; ?>"/>
                             <?php } elseif (!empty($pick['video'])) { ?>                                
                                 <img src="<?php echo ('http://img.youtube.com/vi/' . $pick['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $pick['video'] . '/0.jpg'); ?>" class="img-card " alt="<?php echo $pick['seotitle']; ?>">
@@ -57,7 +57,7 @@
                             $this->db->where('id_reg', $pick['id_reg']);
                             $query = $this->db->get();
                             if ($query->row('picture') != "") {
-                                if (file_exists($query->row('picture'))) {
+                                if (!file_exists(base_url('profile/' . $query->row('id_reg')))) {
                                     echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                 } else {
                                     echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';

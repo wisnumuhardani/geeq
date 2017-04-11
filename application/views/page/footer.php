@@ -23,10 +23,10 @@
             <div class="col l3 m3 s12">
                 <h1 class="stand-title white-text">CATEGORI</h1>
                 <ul class="ft-hotcategory"> 
-                    <li><a href="<?php echo base_url('category/sci-fi'); ?>" class="grey-text">Ngayal <span class="right">(<?php echo $total_scifi; ?>)</span></a></li>
-                    <li><a href="<?php echo base_url('category/tech'); ?>" class="grey-text">Tekno <span class="right">(<?php echo $total_tech; ?>)</span></a></li>
-                    <li><a href="<?php echo base_url('category/extreme-sport'); ?>" class="grey-text">Tantangan <span class="right">(<?php echo $total_sport; ?>)</span></a></li>
-                    <li><a href="<?php echo base_url('category/automotive'); ?>" class="grey-text">Geeq Oto <span class="right">(<?php echo $total_automotive; ?>)</span></a></li> 
+                    <li><a href="<?php echo base_url('category/ngayal'); ?>" class="grey-text">Ngayal <span class="right">(<?php echo $total_scifi; ?>)</span></a></li>
+                    <li><a href="<?php echo base_url('category/tekno'); ?>" class="grey-text">Tekno <span class="right">(<?php echo $total_tech; ?>)</span></a></li>
+                    <li><a href="<?php echo base_url('category/tantangan'); ?>" class="grey-text">Tantangan <span class="right">(<?php echo $total_sport; ?>)</span></a></li>
+                    <li><a href="<?php echo base_url('category/geeq-oto'); ?>" class="grey-text">Geeq Oto <span class="right">(<?php echo $total_automotive; ?>)</span></a></li> 
                     <li><a href="<?php echo base_url('category/video'); ?>" class="grey-text">Video <span class="right">(<?php echo $total_video; ?>)</span></a></li>
                 </ul>
             </div>

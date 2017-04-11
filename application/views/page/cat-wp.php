@@ -43,12 +43,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $scifi['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $scifi['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $scifi['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
@@ -102,12 +102,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $scifi['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $scifi['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $scifi['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">                                                
@@ -176,12 +176,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $sport['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $sport['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $sport['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
@@ -233,12 +233,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $sport['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $sport['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $sport['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
@@ -307,12 +307,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $tech['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $tech['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $tech['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
@@ -362,12 +362,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $tech['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $tech['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $tech['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
@@ -436,12 +436,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $otomotif['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $otomotif['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $otomotif['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
@@ -491,12 +491,12 @@
                                             $query = $this->db->get();
                                             if ($query->row('picture') != "") {
                                                 if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $otomotif['editor'] . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $otomotif['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
                                             } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $otomotif['editor'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                             }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">

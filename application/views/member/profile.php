@@ -27,9 +27,9 @@
                             <span><?php echo $info_user[0]['bio']; ?></span>
                             <div class="clearfix"></div>
                             <?php if ($this->ion_auth->logged_in()) { ?> 
-                                <?php if ($info_user[0]['id_reg'] == $id_reg) { ?>     
+                                <?php if ($info_user[0]['id_reg'] == $datalogin['id_reg']) { ?>     
                                     <div class="bt-edit left">
-                                        <a  href="<?php echo base_url('setting/' . $id_reg . ''); ?>" class="btn-geeq">Edit profile</a>
+                                        <a  href="<?php echo base_url('setting/' . $datalogin['id_reg'] . ''); ?>" class="btn-geeq">Edit profile</a>
                                         <a href="#gantifoto" class="btn-geeq">Edit Foto Profile</a>
                                         <a href="#ganticover" class="btn-geeq">Edit Cover Profie</a>
                                         <!--                                        <a class="btn-geeq nhide" style="display:none;">Save</a>
@@ -49,7 +49,7 @@
         <div class="nav-dash">
             <ul>
                 <li><a href="<?php echo base_url('profile/' . $info_user[0]['id_reg']); ?>">Profile</a></li>
-                <li><a href="<?php echo base_url('my-stories/' . $id_reg . ''); ?>">My Stories</a></li>
+                <li><a href="<?php echo base_url('my-stories/' . $datalogin['id_reg'] . ''); ?>">My Stories</a></li>
             </ul>
             <div class="bx-scr right">
 				<!--
@@ -67,7 +67,7 @@
         <div class="row">
            
             <div class="col s12 m12 l3 left-top-profile">
-                 <!--<div class="bx-title">
+                 <div class="bx-title">
                     <h2 class="stand-title"><span>TOP PROFILE</span></h2>
                 </div>
                 <div class="card-tm2 white">
@@ -94,7 +94,7 @@
                             <div class="clearfix"></div>          
                         </div>
                     <?php } ?>
-                </div>-->
+                </div>
             </div>
             
             <div class="col s12 m12 l6">
@@ -265,7 +265,7 @@
         <div class="modal-content">
             <h6>Ganti Foto Profil <small>Size 400x400px</small></h6>
             <input hidden name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>"/>
-            <input hidden name="id_reg" value="<?php echo $id_reg; ?>"/>
+            <input hidden name="id_reg" value="<?php echo $datalogin['id_reg']; ?>"/>
             <input hidden name="id" value="<?php echo $id; ?>"/>
             <div class="file-field input-field">                        
                 <div class="btn">
@@ -288,7 +288,7 @@
         <div class="modal-content">
             <h6>Ganti Cover Profil <small>Size 1366x400px</small></h6> 
             <input hidden name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>"/>
-            <input hidden name="id_reg" value="<?php echo $id_reg; ?>"/>
+            <input hidden name="id_reg" value="<?php echo $datalogin['id_reg']; ?>"/>
             <input hidden name="id" value="<?php echo $id; ?>"/>
             <div class="file-field input-field">                        
                 <div class="btn">

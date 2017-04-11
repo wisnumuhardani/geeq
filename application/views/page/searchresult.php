@@ -5,7 +5,7 @@
         <div class="row">  
             <div class="col s12 m12 l12">
                 <div class="bx-title">
-                    <h2 class="stand-title"><span style="min-width:360px;">Hasil pencarian keyword <?php echo $namakeyword; ?></span></h2>
+                    <h2 class="stand-title">Hasil pencarian keyword <?php echo $namakeyword; ?></h2>
                 </div> 
             </div>
             <?php

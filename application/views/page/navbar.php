@@ -28,7 +28,7 @@
             <a href="#loginmodal" class="modal-trigger right btn-top" >Sign in/ Sign up</a>
         <?php } else { ?> 
             <a href="#" data-activates="dropdown-menuser" class="right btn-top dropdown-button usr-login">
-			   <?php if(!empty($datalogin['profil_picture'])): ?>
+			   <?php if(file_exists($datalogin['profil_picture'])): ?>
                 <img src="<?php echo base_url('assets/member/' . $datalogin['id_reg'] . '/thumb/' . $datalogin['profil_picture'] . ''); ?>" alt="" class="circle usr-feat">
 			   <?php else: ?>
 			   <img src="<?php echo base_url('assets/images/no-foto.jpg'); ?>" alt="" class="circle usr-noprofile">

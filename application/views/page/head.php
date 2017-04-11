@@ -55,4 +55,31 @@
 		</script>
 
     </head>
+	<style>  
+		.myloader{
+			width:66px;
+			height:66px;
+			position:absolute;
+			left:50%;
+			top:50%;
+			margin-left:-33px;
+			margin-top:-33px;
+			z-index:999999!important;
+		 }
+	</style>
     <body>
+
+ 
+	<div id="loadingsosmed" class="myloader">  
+		<div class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-blue-only">
+			  <div class="circle-clipper left">
+				<div class="circle"></div>
+			  </div><div class="gap-patch">
+				<div class="circle"></div>
+			  </div><div class="circle-clipper right">
+				<div class="circle"></div>
+			  </div>
+			</div>
+		</div>
+	</div> 

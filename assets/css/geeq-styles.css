@@ -447,6 +447,9 @@ footer .stand-title{
 .search-form i{
 	color:#333;
 }
+.search-form input#keyword{
+	color:#fff !important;
+}
 .usr-login{
 	position: relative;
 	margin:0 15px 0 0;

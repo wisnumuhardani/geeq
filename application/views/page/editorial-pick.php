@@ -13,7 +13,7 @@
                 <div class="col s12 m3">
                     <div class="card-tm1 white">
                         <div class="feat-bx-sm"> 						
-                            <?php if (!empty($pick['image'])) { ?>   
+                            <?php if (!empty($pick['image']) && file_exists('assets/picture/thumb/' . $pick['image'])) { ?>   
                                 <img src="<?php echo base_url('assets/picture/thumb/' . $pick['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $pick['image'] . ''); ?>" class="img-card " alt="<?php echo $pick['seotitle']; ?>"/>
                             <?php } elseif (!empty($pick['video'])) { ?>                                
                                 <img src="<?php echo ('http://img.youtube.com/vi/' . $pick['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $pick['video'] . '/0.jpg'); ?>" class="img-card " alt="<?php echo $pick['seotitle']; ?>">
@@ -51,31 +51,17 @@
                         </div>
                         <div class="bx-usr-info">
                             <?php
-                            $this->db->select('id_reg');
-                            $this->db->select('picture');
-                            $this->db->from('users');
-                            $this->db->where('id_reg', $pick['id_reg']);
-                            $query = $this->db->get();
-                            if ($query->row('picture') != "") {
-                                if (!file_exists(base_url('profile/' . $query->row('id_reg')))) {
-                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                if (file_exists('assets/member/' . $pick['id_reg'].'/thumb/'. $users[$pick['id_reg']]['picture'])) {
+                                    echo '<a href="' . base_url('profile/' . $pick['id_reg']) . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $pick['id_reg'] . '/thumb/' . $users[$pick['id_reg']]['picture'] . '') . '" ></a>';
                                 } else {
-                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                    echo '<a href="' . base_url('profile/' . $pick['id_reg']) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                 }
-                            } else {
-                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                            }
                             ?>                         
                             <div class="auth-date grey-text lighten-5 ">
                                 <span class="auth-feat">
                                     <a href="<?php echo base_url('profile/' . $pick['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                         <?php
-                                        $this->db->select('id_reg');
-                                        $this->db->select('username');
-                                        $this->db->from('users');
-                                        $this->db->where('id_reg', $pick['id_reg']);
-                                        $query = $this->db->get();
-                                        echo $query->row('username');
+                                        echo $users[$pick['id_reg']]['username'];
                                         ?>
                                     </a>
                                 </span>

@@ -7,15 +7,13 @@
                 <div class="bx-dash">
                     <div class="indash-profile">  
                         <?php
-                        if ($info_user[0]['picture'] != "") {
-                            if (!file_exists($info_user[0]['picture'])) {
+                        
+                            if (!empty($info_user[0]['picture']) &&  file_exists('assets/member/' . $info_user[0]['id_reg'] . '/' . $info_user[0]['picture'])) {
                                 echo '<img src="' . base_url('assets/member/' . $info_user[0]['id_reg'] . '/' . $info_user[0]['picture'] . '') . '" >';
                             } else {
                                 echo '<img src="' . base_url('assets/images/no-foto.jpg') . '">';
                             }
-                        } else {
-                            echo '<img  src="' . base_url('assets/images/no-foto.jpg') . '">';
-                        }
+                        
                         ?>   
                         <div class="indash-info-profile">
 
@@ -74,22 +72,18 @@
                     <?php foreach ($top_profile as $val) { ?> 
                         <div class="bx-profile">
                             <a href="<?php echo base_url('profile/' . $val['id_reg']); ?>">
-                                <?php
-                                if ($val['picture'] != "") {
-                                    if (!file_exists($val['picture'])) {
+                                <?php                                
+                                    if (!empty($val['picture']) && file_exists('assets/member/' . $val['id_reg'] . '/thumb/' . $val['picture'] )) {
                                         echo '<img class="circle usr-feat" src="' . base_url('assets/member/' . $val['id_reg'] . '/thumb/' . $val['picture'] . '') . '" >';
                                     } else {
                                         echo '<img src="' . base_url('assets/images/no-foto.jpg') . '">';
-                                    }
-                                } else {
-                                    echo '<img  src="' . base_url('assets/images/no-foto.jpg') . '">';
-                                }
+                                    }                                
                                 ?>  
                             </a>
                             <a href="<?php echo base_url('profile/' . $val['id_reg']); ?>" class="profile-author grey-text">
                                 <?php echo $val['first_name'] . ' ' . $val['last_name']; ?>
                             </a>
-                            <span class="point-prof"><strong>2000</strong> Point</span>
+                            <span class="point-prof"><strong><?=$val['total_poin']?></strong> Point</span>
                             <a href="#" class="btn-follow right">Follow</a>
                             <div class="clearfix"></div>          
                         </div>
@@ -104,12 +98,11 @@
                     ?>
                     <div class="card-tm1 white list-feed">
                         <div class="feat-bx-sm" onclick="location.href = '<?php echo $results_url; ?>'">  
-                            <?php if (!empty($val->image)) { ?>   
+                            <?php if (!empty($val->image) && file_exists('assets/picture/medium/' . $val->image)) { ?>   
                                 <img src="<?php echo base_url('assets/picture/medium/' . $val->image . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $val->image . ''); ?>" class="img-card" alt="<?php echo $val->seotitle; ?>"/>
                             <?php } elseif (!empty($val->video)) { ?>                                
                                 <img src="<?php echo ('http://img.youtube.com/vi/' . $val->video . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $val->video . '/0.jpg'); ?>" class="img-card" alt="<?php echo $val->seotitle; ?>">
-                            <?php } elseif (!file_exists($val->image) || !file_exists($val->video)) { ?>   
-                                <img src="<?php echo base_url('assets/images/no-img-article.jpg'); ?>" class="img-card"/>
+                            
                             <?php } else { ?>
                                 <img src="<?php echo base_url('assets/images/no-img-article.jpg'); ?>" class="img-card"/>
                             <?php } ?>  
@@ -147,12 +140,7 @@
                                 <span class="auth-feat">
                                     <a href="<?php echo base_url('profile/' . $info_user[0]['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                         <?php
-                                        $this->db->select('id_reg');
-                                        $this->db->select('username');
-                                        $this->db->from('users');
-                                        $this->db->where('id_reg', $info_user[0]['id_reg']);
-                                        $query = $this->db->get();
-                                        echo $query->row('username');
+                                        echo $users[$info_user[0]['id_reg']]['username'];
                                         ?>
                                     </a>
                                 </span>
@@ -210,31 +198,19 @@
                         <div class="bx-usr-info">
                             <a href="<?php echo base_url('profile/' . $val['id_reg']); ?>"> 
                                 <?php
-                                $this->db->select('id_reg');
-                                $this->db->select('picture');
-                                $this->db->from('users');
-                                $this->db->where('id_reg', $val['id_reg']);
-                                $query = $this->db->get();
-                                if ($query->row('picture') != "") {
-                                    if (!file_exists($query->row('picture'))) {
-                                        echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                    if (file_exists('assets/member/' . $val['id_reg'] . '/thumb/' . $users[$val['id_reg']]['picture'])) {
+                                        echo '<a href="' . base_url('profile/' . $val['id_reg']) . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $val['id_reg'] . '/thumb/' . $users[$val['id_reg']]['picture'] . '') . '" ></a>';
                                     } else {
                                         echo '<a href="' . base_url('profile/' . $val['id_reg']) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                     }
-                                } else {
-                                    echo '<a href="' . base_url('profile/' . $val['id_reg']) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                }
+
                                 ?>
                                 <div class="auth-date grey-text lighten-5 ">
                                     <span class="auth-feat">
                                     <a href="<?php echo base_url('profile/' . $val['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                         <?php
-                                        $this->db->select('id_reg');
-                                        $this->db->select('username');
-                                        $this->db->from('users');
-                                        $this->db->where('id_reg', $val['id_reg']);
-                                        $query = $this->db->get();
-                                        echo $query->row('username');
+                                        echo $users[$val['id_reg']]['username'];
                                         ?>
                                     </a>
                                 </span>
@@ -266,7 +242,7 @@
             <h6>Ganti Foto Profil <small>Size 400x400px</small></h6>
             <input hidden name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>"/>
             <input hidden name="id_reg" value="<?php echo $datalogin['id_reg']; ?>"/>
-            <input hidden name="id" value="<?php echo $id; ?>"/>
+            <input hidden name="id" value="<?php echo $datalogin['id']; ?>"/>
             <div class="file-field input-field">                        
                 <div class="btn">
                     <span>Pilih Foto</span>
@@ -289,7 +265,7 @@
             <h6>Ganti Cover Profil <small>Size 1366x400px</small></h6> 
             <input hidden name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>"/>
             <input hidden name="id_reg" value="<?php echo $datalogin['id_reg']; ?>"/>
-            <input hidden name="id" value="<?php echo $id; ?>"/>
+            <input hidden name="id" value="<?php echo $datalogin['id']; ?>"/>
             <div class="file-field input-field">                        
                 <div class="btn">
                     <span>Pilih Foto</span>

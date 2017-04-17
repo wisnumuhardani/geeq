@@ -18,12 +18,11 @@
                                     <li>
                                         <div class="mask-tab left">
                                             <a href="<?php echo $scifi_url; ?>">
-                                                <?php if (!empty($scifi['image'])) { ?>   
+                                                <?php if (!empty($scifi['image']) && file_exists('assets/picture/thumb/' . $scifi['image'])) { ?>   
                                                     <img src="<?php echo base_url('assets/picture/thumb/' . $scifi['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $scifi['image'] . ''); ?>" class="mask-tab" alt="<?php echo $scifi['seotitle']; ?>"/>
                                                 <?php } elseif (!empty($scifi['video'])) { ?>                                
                                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $scifi['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $scifi['video'] . '/0.jpg'); ?>" class="mask-tab " alt="<?php echo $scifi['seotitle']; ?>">
-                                                <?php } elseif (!file_exists($scifi['image']) || !file_exists($scifi['video'])) { ?>   
-                                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
+                                               
                                                 <?php } else { ?>
                                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
                                                 <?php } ?>
@@ -36,31 +35,19 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $scifi['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                                if (file_exists('assets/member/' . $scifi['id_reg'] . '/thumb/' . $users[$scifi['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $scifi['id_reg']) . '"><img class="circle usr-feat left" alt="' . $scifi['id_reg'] . '" src="' . base_url('assets/member/' . $scifi['id_reg'] . '/thumb/' . $users[$scifi['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $scifi['id_reg']) . '"><img class="circle usr-feat left" alt="' . $scifi['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $scifi['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $scifi['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+
+                                                        echo $users[$scifi['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -79,12 +66,11 @@
                                     <li>
                                         <div class="mask-tab left">
                                             <a href="<?php echo $scifi_url; ?>">
-                                                <?php if (!empty($scifi['image'])) { ?>   
+                                                <?php if (!empty($scifi['image']) && file_exists('assets/picture/thumb/' . $scifi['image'])) { ?>   
                                                     <img data-src="<?php echo base_url('assets/picture/thumb/' . $scifi['image'] . ''); ?>" src="<?php echo base_url('assets/picture/thumb/' . $scifi['image'] . ''); ?>" class="img-tab " alt="<?php echo $scifi['seotitle']; ?>"/>
                                                 <?php } elseif (!empty($scifi['video'])) { ?>                                
                                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $scifi['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $scifi['video'] . '/0.jpg'); ?>" class="img-tab " alt="<?php echo $scifi['seotitle']; ?>">
-                                                <?php } elseif (!file_exists($scifi['image']) || !file_exists($scifi['video'])) { ?>   
-                                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="img-tab "/>
+                                                
                                                 <?php } else { ?>
                                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="img-tab "/>
                                                 <?php } ?>	
@@ -95,31 +81,17 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $scifi['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                if (file_exists('assets/member/' . $scifi['id_reg'] . '/thumb/' . $users[$scifi['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $scifi['id_reg']) . '"><img class="circle usr-feat left" alt="' . $scifi['id_reg'] . '" src="' . base_url('assets/member/' . $scifi['id_reg'] . '/thumb/' . $users[$scifi['id_reg']]['picture']) . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $scifi['id_reg']) . '"><img class="circle usr-feat left" alt="' . $scifi['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
                                             ?>
                                             <div class="auth-date grey-text lighten-5">                                                
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $scifi['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $scifi['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+                                                        echo $users[$scifi['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -153,12 +125,11 @@
                                     <li>
                                         <div class="mask-tab left"> 
                                             <a href="<?php echo $sport_url; ?>">
-                                                <?php if (!empty($sport['image'])) { ?>   
+                                                <?php if (!empty($sport['image']) && file_exists('assets/picture/thumb/' . $sport['image'])) { ?>   
                                                     <img src="<?php echo base_url('assets/picture/thumb/' . $sport['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $sport['image'] . ''); ?>" class="mask-tab " alt="<?php echo $sport['seotitle']; ?>"/>
                                                 <?php } elseif (!empty($sport['video'])) { ?>                                
                                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $sport['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $sport['video'] . '/0.jpg'); ?>" class="mask-tab " alt="<?php echo $sport['seotitle']; ?>">
-                                                <?php } elseif (!file_exists($sport['image']) || !file_exists($sport['video'])) { ?>   
-                                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
+                                                
                                                 <?php } else { ?>
                                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
                                                 <?php } ?>
@@ -169,31 +140,20 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $sport['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                                if (file_exists('assets/member/' . $sport['id_reg'] . '/thumb/' . $users[$sport['id_reg']]['picture'] )) {
+                                                    echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/member/' . $sport['id_reg'] . '/thumb/' . $users[$sport['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
+
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $sport['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $sport['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+
+                                                        echo $users[$sport['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -210,12 +170,11 @@
                                     <li>
                                         <div class="mask-tab left">
                                             <a href="<?php echo $sport_url; ?>">
-                                                <?php if (!empty($sport['image'])) { ?>   
+                                                <?php if (!empty($sport['image']) && file_exists('assets/picture/thumb/' . $sport['image']) ) { ?>   
                                                     <img src="<?php echo base_url('assets/picture/thumb/' . $sport['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $sport['image'] . ''); ?>" class="img-tab " alt="<?php echo $sport['seotitle']; ?>"/>
                                                 <?php } elseif (!empty($sport['video'])) { ?>                                
                                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $sport['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $sport['video'] . '/0.jpg'); ?>" class="img-tab " alt="<?php echo $sport['seotitle']; ?>">
-                                                <?php } elseif (!file_exists($sport['image']) || !file_exists($sport['video'])) { ?>   
-                                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="img-tab "/>
+                                                
                                                 <?php } else { ?>
                                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="img-tab "/>
                                                 <?php } ?>	
@@ -226,31 +185,19 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $sport['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                                if (file_exists('assets/member/' . $sport['id_reg'] . '/thumb/' . $users[$sport['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/member/' . $sport['id_reg'] . '/thumb/' . $users[$sport['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
+
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $sport['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $sport['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+                                                        echo $users[$sport['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -284,12 +231,11 @@
                                     <li>
                                         <div class="mask-tab left">
                                             <a href="<?php echo $tech_url; ?>">
-                                                <?php if (!empty($tech['image'])) { ?>   
+                                                <?php if (!empty($tech['image']) && file_exists('assets/picture/thumb/' . $tech['image'])) { ?>   
                                                     <img src="<?php echo base_url('assets/picture/thumb/' . $tech['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $tech['image'] . ''); ?>" class="mask-tab " alt="<?php echo $tech['seotitle']; ?>"/>
                                                 <?php } elseif (!empty($tech['video'])) { ?>                                
                                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $tech['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $tech['video'] . '/0.jpg'); ?>" class="mask-tab " alt="<?php echo $tech['seotitle']; ?>">
-                                                <?php } elseif (!file_exists($tech['image']) || !file_exists($tech['video'])) { ?>   
-                                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
+                                                
                                                 <?php } else { ?>
                                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
                                                 <?php } ?>
@@ -300,31 +246,18 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $tech['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                if (file_exists('assets/member/' . $tech['id_reg'] . '/thumb/' . $users[$tech['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $tech['id_reg']) . '"><img class="circle usr-feat left" alt="' . $tech['id_reg'] . '" src="' . base_url('assets/member/' . $tech['id_reg'] . '/thumb/' . $users[$tech['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $tech['id_reg']) . '"><img class="circle usr-feat left" alt="' . $tech['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
+
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $scifi['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $tech['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+                                                        echo $users[$sport['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -355,31 +288,19 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $tech['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                                if (file_exists('assets/member/' . $tech['id_reg'] . '/thumb/' . $users[$tech['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $tech['id_reg']) . '"><img class="circle usr-feat left" alt="' . $tech['id_reg'] . '" src="' . base_url('assets/member/' . $tech['id_reg'] . '/thumb/' . $users[$tech['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $tech['id_reg']) . '"><img class="circle usr-feat left" alt="' . $tech['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
+
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $tech['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $tech['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+
+                                                        echo $users[$sport['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -413,12 +334,11 @@
                                     <li>
                                         <div class="mask-tab left"> 
                                             <a href="<?php echo $otomotif_url; ?>">
-                                                <?php if (!empty($otomotif['image'])) { ?>   
+                                                <?php if (!empty($otomotif['image']) && file_exists('assets/picture/thumb/' . $otomotif['image'])) { ?>   
                                                     <img src="<?php echo base_url('assets/picture/thumb/' . $otomotif['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $otomotif['image'] . ''); ?>" class="mask-tab " alt="<?php echo $otomotif['seotitle']; ?>"/>
                                                 <?php } elseif (!empty($otomotif['video'])) { ?>                                
                                                     <img src="<?php echo ('http://img.youtube.com/vi/' . $otomotif['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $otomotif['video'] . '/0.jpg'); ?>" class="" alt="<?php echo $otomotif['seotitle']; ?>">
-                                                <?php } elseif (!file_exists($otomotif['image']) || !file_exists($otomotif['video'])) { ?>   
-                                                    <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
+                                                
                                                 <?php } else { ?>
                                                     <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="mask-tab "/>
                                                 <?php } ?>
@@ -429,31 +349,19 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $otomotif['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                                if (file_exists('assets/member/' . $otomotif['id_reg'] . '/thumb/' . $users[$otomotif['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/member/' . $otomotif['id_reg'] . '/thumb/' . $users[$otomotif['id_reg']]['picture']  . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
+
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $otomotif['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $otomotif['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+                                                        echo $users[$otomotif['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>
@@ -484,31 +392,20 @@
                                         </div>
                                         <div class="bx-usr-info">
                                             <?php
-                                            $this->db->select('id_reg');
-                                            $this->db->select('picture');
-                                            $this->db->from('users');
-                                            $this->db->where('id_reg', $otomotif['id_reg']);
-                                            $query = $this->db->get();
-                                            if ($query->row('picture') != "") {
-                                                if (!file_exists($query->row('picture'))) {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                                if (file_exists('assets/member/' . $otomotif['id_reg'] . '/thumb/' . $users[$otomotif['id_reg']]['picture'])) {
+                                                    echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/member/' . $otomotif['id_reg'] . '/thumb/' . $users[$otomotif['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
-                                                    echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                                    echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
-                                            } else {
-                                                echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg') . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                            }
+
                                             ?>
                                             <div class="auth-date grey-text lighten-5">
                                                 <span class="auth-feat">
                                                     <a href="<?php echo base_url('profile/' . $otomotif['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                         <?php
-                                                        $this->db->select('id_reg');
-                                                        $this->db->select('username');
-                                                        $this->db->from('users');
-                                                        $this->db->where('id_reg', $otomotif['id_reg']);
-                                                        $query = $this->db->get();
-                                                        echo $query->row('username');
+
+                                                        echo $users[$otomotif['id_reg']]['username'];
                                                         ?>
                                                     </a>
                                                 </span>

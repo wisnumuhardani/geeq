@@ -29,6 +29,7 @@ if (!defined('BASEPATH'))
   | -------------------------------------------------------------------------
   | Database table names.
  */
+ 
 $config['tables']['users'] = 'users';
 $config['tables']['groups'] = 'groups';
 $config['tables']['users_groups'] = 'users_groups';

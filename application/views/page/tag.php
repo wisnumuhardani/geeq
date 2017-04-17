@@ -13,12 +13,11 @@
                 <div class="col s12 m4 l3">
                     <div class="card-tm1 white">
                         <div class="feat-bx-sm"> 
-                            <?php if (!empty($val->image)) { ?>   
+                            <?php if (!empty($val->image) && file_exists('assets/picture/thumb/' . $val->image)) { ?>   
                                 <img src="<?php echo base_url('assets/picture/thumb/' . $val->image . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $val->image . ''); ?>" class="responsive-img" alt="<?php echo $val->seotitle; ?>"/>
                             <?php } elseif (!empty($val->video)) { ?>                                
                                 <img src="<?php echo ('http://img.youtube.com/vi/' . $val->video . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $val->video . '/0.jpg'); ?>" class="responsive-img" alt="<?php echo $val->seotitle; ?>">
-                            <?php } elseif (!file_exists($val->image) || !file_exists($val->video)) { ?>   
-                                <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="responsive-img"/>
+                            
                             <?php } else { ?>
                                 <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="responsive-img"/>
                             <?php } ?>	
@@ -48,32 +47,17 @@
                         </div>
                         <div class="bx-usr-info">
                             <?php
-                            $this->db->select('id_reg');
-                            $this->db->select('picture');
-                            $this->db->from('users');
-                            $this->db->where('id_reg', $val->id_reg);
-                            $query = $this->db->get();
-                            $urlprofile = base_url('profile/' . $query->row('id_reg'));
-                            if ($query->row('picture') != "") {
-                                if (file_exists($query->row('picture'))) {
-                                    echo '<a href="' . $urlprofile . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $query->row('id_reg') . '/' . $query->row('picture') . '') . '" ></a>';
+                                if (file_exists('assets/member/' . $val->id_reg . '/' . $users[$val->id_reg]['picture'] )) {
+                                    echo '<a href="' .  base_url('profile/' . $val->id_reg) . '"><img class="circle usr-feat left" src="' . base_url('assets/member/' . $val->id_reg . '/' . $users[$val->id_reg]['picture'] . '') . '" ></a>';
                                 } else {
-                                    echo '<a href="' . $urlprofile . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                    echo '<a href="' .  base_url('profile/' . $val->id_reg) . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                 }
-                            } else {
-                                echo '<a href="' . $urlprofile . '"><img class="circle usr-feat left" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                            }
                             ?> 
                             <div class="auth-date grey-text lighten-5">
                                 <span class="auth-feat">
                                     <a href="<?php echo base_url('profile/' . $val->id_reg . ''); ?>" class="grey-text lighten-5">
                                         <?php
-                                        $this->db->select('id_reg');
-                                        $this->db->select('username');
-                                        $this->db->from('users');
-                                        $this->db->where('id_reg', $val->id_reg);
-                                        $query = $this->db->get();
-                                        echo $query->row('username');
+                                        echo $users[$val->id_reg]['username'];
                                         ?>
                                     </a>
                                 </span>

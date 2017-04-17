@@ -7,11 +7,14 @@ if (!defined('BASEPATH')) {
 class Login extends CI_Controller {
 
     public function __construct() {
+
         parent::__construct();
+        
+        $this->load->model('activity_model');
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
         $this->load->library(array('ion_auth', 'form_validation', 'upload'));
         $this->load->helper(array('url'));
-        $this->load->database();
+        
         $this->lang->load('auth');      
 
     }
@@ -36,7 +39,10 @@ class Login extends CI_Controller {
         }
 
         if ($this->ion_auth->login($email, $password, $remember)) {
-            $m['message'] = "success";                          
+            $m['message'] = "success";  
+            $user = $this->ion_auth->user()->row();                      
+            //LOG ACT POIN 
+            $this->activity_model->insert_act('4',$user->id);        
         } else {
             //cek email 
             if($this->ion_auth->email_check($email)){
@@ -102,6 +108,9 @@ class Login extends CI_Controller {
                 if ($this->ion_auth->register($identity, $password, $email, $additional_data)) {
                     if ($this->ion_auth->login($identity, $password, $remember)) {
                         $m['message'] = "success";
+                        //LOG ACT POIN          
+                        $user = $this->ion_auth->user()->row();                               
+                        $this->activity_model->insert_act('1',$user->id); 
                     } else {
                         $m['message'] = "login failed";
                     }                

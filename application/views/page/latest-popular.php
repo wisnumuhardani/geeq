@@ -32,12 +32,10 @@
                             <li>
                                 <div class="mask-tab left">	
                                     <a href="<?php echo $popular_url; ?>">
-                                        <?php if (!empty($popular['image'])) { ?>   
+                                        <?php if (!empty($popular['image']) && file_exists('assets/picture/thumb/' . $popular['image'])) { ?>   
                                             <img src="<?php echo base_url('assets/picture/thumb/' . $popular['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $popular['image'] . ''); ?>" class="img-tab" alt="<?php echo $popular['seotitle']; ?>"/>
                                         <?php } elseif (!empty($popular['video'])) { ?>                                
                                             <img src="<?php echo ('http://img.youtube.com/vi/' . $popular['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $popular['video'] . '/0.jpg'); ?>" class="img-tab" alt="<?php echo $popular['seotitle']; ?>">
-                                        <?php } elseif (!file_exists($popular['image']) || !file_exists($popular['video'])) { ?>   
-                                            <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="responsive-img"/>
                                         <?php } else { ?>
                                             <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="responsive-img"/>
                                         <?php } ?>
@@ -54,42 +52,28 @@
                                     ?>
                                     <a href="<?php echo base_url('category/' . $query->row('seotitle') . ''); ?>">
                                         <span class="cat-label red darken-4">  
-        <?php echo $query->row('name'); ?>
+                                            <?php echo $query->row('name'); ?>
                                         </span>
                                     </a>
-    <?php } ?>
+                                <?php } ?>
                                 <div class="tab-text">
                                     <a href="<?php echo $popular_url; ?>" class="black-text">
-    <?php echo word_limiter($popular['title'], 6); ?>
+                                        <?php echo word_limiter($popular['title'], 6); ?>
                                     </a>
                                 </div>							
                                 <div class="bx-usr-info">
                                     <?php
-                                    $this->db->select('id_reg');
-                                    $this->db->select('picture');
-                                    $this->db->from('users');
-                                    $this->db->where('id_reg', $popular['id_reg']);
-                                    $query = $this->db->get();
-                                    if ($query->row('picture') != "") {
-                                        if (!file_exists($query->row('picture'))) {
-                                            echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg'). '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+                                        if (file_exists('assets/member/' . $popular['id_reg'] . '/thumb/' . $users[$popular['id_reg']]['picture'])) {
+                                            echo '<a href="' . base_url('profile/' . $popular['id_reg']) . '"><img class="circle usr-feat left" alt="' . $popular['id_reg']. '" src="' . base_url('assets/member/' . $popular['id_reg'] . '/thumb/' . $users[$popular['id_reg']]['picture']  . '') . '" ></a>';
                                         } else {
-                                            echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg'). '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                            echo '<a href="' . base_url('profile/' . $popular['id_reg']) . '"><img class="circle usr-feat left" alt="' . $popular['id_reg']. '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                         }
-                                    } else {
-                                        echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg'). '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                    }
                                     ?>
                                     <div class="auth-date grey-text lighten-5">
                                         <span class="auth-feat">
                                             <a href="<?php echo base_url('profile/' . $popular['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                 <?php
-                                                $this->db->select('id_reg');
-                                                $this->db->select('username');
-                                                $this->db->from('users');
-                                                $this->db->where('id_reg', $popular['id_reg']);
-                                                $query = $this->db->get();
-                                                echo $query->row('username');
+                                                echo $users[$popular['id_reg']]['username'];
                                                 ?>
                                             </a>
                                         </span>
@@ -178,12 +162,11 @@
                             <li>
                                 <div class="mask-tab left">
                                     <a href="<?php echo $popular_url; ?>">
-                                        <?php if (!empty($popular['image'])) { ?>   
+                                        <?php if (!empty($popular['image']) && file_exists('assets/picture/thumb/' . $popular['image'])) { ?>   
                                             <img src="<?php echo base_url('assets/picture/thumb/' . $popular['image'] . ''); ?>" data-src="<?php echo base_url('assets/picture/thumb/' . $popular['image'] . ''); ?>" class="responsive-img img-tab" alt="<?php echo $popular['seotitle']; ?>"/>
                                         <?php } elseif (!empty($popular['video'])) { ?>                                
                                             <img src="<?php echo ('http://img.youtube.com/vi/' . $popular['video'] . '/0.jpg'); ?>" data-src="<?php echo ('http://img.youtube.com/vi/' . $popular['video'] . '/0.jpg'); ?>" class="responsive-img img-tab" alt="<?php echo $popular['seotitle']; ?>">
-                                        <?php } elseif (!file_exists($popular['image']) || !file_exists($popular['video'])) { ?>   
-                                            <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="responsive-img"/>
+                                        
                                         <?php } else { ?>
                                             <img src="<?php echo base_url('assets/images/no-image.jpg'); ?>" class="responsive-img"/>
                                 <?php } ?>
@@ -211,31 +194,18 @@
                                 </div>
                                 <div class="bx-usr-info">
                                     <?php
-                                    $this->db->select('id_reg');
-                                    $this->db->select('picture');
-                                    $this->db->from('users');
-                                    $this->db->where('id_reg', $popular['id_reg']);
-                                    $query = $this->db->get();
-                                    if ($query->row('picture') != "") {
-                                        if (!file_exists($query->row('picture'))) {
-                                            echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg'). '" src="' . base_url('assets/member/' . $query->row('id_reg') . '/thumb/' . $query->row('picture') . '') . '" ></a>';
+
+                                        if (file_exists('assets/member/' . $popular['id_reg'] . '/thumb/' . $users[$popular['id_reg']]['picture'])) {
+                                            echo '<a href="' . base_url('profile/' . $popular['id_reg']) . '"><img class="circle usr-feat left" alt="' . $popular['id_reg']. '" src="' . base_url('assets/member/' . $popular['id_reg'] . '/thumb/' . $users[$popular['id_reg']]['picture'] . '') . '" ></a>';
                                         } else {
-                                            echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg'). '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
+                                            echo '<a href="' . base_url('profile/' . $popular['id_reg']) . '"><img class="circle usr-feat left" alt="' . $popular['id_reg']. '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                         }
-                                    } else {
-                                        echo '<a href="' . base_url('profile/' . $query->row('id_reg')) . '"><img class="circle usr-feat left" alt="' . $query->row('id_reg'). '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
-                                    }
                                     ?>
                                     <div class="auth-date grey-text lighten-5">
                                         <span class="auth-feat">
                                             <a href="<?php echo base_url('profile/' . $popular['id_reg'] . ''); ?>" class="grey-text lighten-5">
                                                 <?php
-                                                $this->db->select('id_reg');
-                                                $this->db->select('username');
-                                                $this->db->from('users');
-                                                $this->db->where('id_reg', $popular['id_reg']);
-                                                $query = $this->db->get();
-                                                echo $query->row('username');
+                                                echo $users[$popular['id_reg']]['username'];
                                                 ?>
                                             </a>
                                         </span>

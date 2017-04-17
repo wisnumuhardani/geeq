@@ -138,7 +138,7 @@
     //
     // Dinar Blonde
     $(document).ready(function () {
-        getpost(0);
+       // getpost(0);
         $("#loadmorebtn").click(function (e) {
             e.preventDefault();
             var page = $(this).data('val');

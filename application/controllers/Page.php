@@ -8,8 +8,10 @@ class Page extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->database();
-        $this->load->helper(array('string', 'form', 'url', 'html', 'array'));
+        //$this->load->database();
+        //$this->load->helper(array('string', 'form', 'url', 'html', 'array'));
+        $this->load->model('user_model');
+        $this->load->model('activity_model');
         $this->load->library(array('ion_auth', 'pagination', 'session', 'form_validation'));
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
         $this->lang->load('auth');
@@ -21,6 +23,9 @@ class Page extends CI_Controller {
         $offset = 9 * $page;
         $limit = 9;
         $data['data_post'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY date DESC LIMIT $offset,$limit")->result_array();
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();    
+        $data['users'] = $this->get_user_array($users);
+
         $this->load->view('page/loadmore-home', $data);
     }
 
@@ -46,7 +51,7 @@ class Page extends CI_Controller {
         $data['all_tag'] = $this->blog_model->get_tags()->result_array();
         $data['category'] = $this->blog_model->get_post_category()->result_array();
         $data['nama_kategori'] = $this->blog_model->get_post_category("WHERE id='$id_category' ")->result_array();
-        $data['foto_user'] = $this->blog_model->get_user("WHERE id_reg='$idreg'")->result_array();
+        $data['foto_user'] = $this->user_model->get_user("WHERE id_reg='$idreg'")->result_array();
 
         $data['popular_post'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY hits DESC LIMIT 5")->result_array();
         $data['random_post'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY RAND() LIMIT 5")->result_array();
@@ -66,11 +71,13 @@ class Page extends CI_Controller {
         $data['total_sport'] = $this->blog_model->get_cat_sport();
         $data['total_automotive'] = $this->blog_model->get_cat_automotive();
         $data['total_video'] = $this->blog_model->get_cat_video();
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();
+        $data['users'] = $this->get_user_array($users);
 
         //LOAD DATA VIEW
         $html['head'] = $this->load->view('page/head', $data, TRUE);
-        $html['navbar'] = $this->load->view('page/navbar', $data, TRUE);       
-        $html['editorial'] = $this->load->view('page/editorial-pick', $data, TRUE);
+        $html['navbar'] = $this->load->view('page/navbar', $data, TRUE);
+        $html['editorial'] = $this->load->view('page/editorial-pick', $data, TRUE);        
         $html['allcat'] = $this->load->view('page/cat-wp', $data, TRUE);
         $html['video'] = $this->load->view('page/video', $data, TRUE);
         $html['latest'] = $this->load->view('page/latest-popular', $data, TRUE);
@@ -115,9 +122,13 @@ class Page extends CI_Controller {
         $data['latest_new'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY date DESC LIMIT 6")->result_array();
         $data['editorial_pick'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' AND category='$cat' ORDER BY date DESC LIMIT 4")->result_array();
         $data['url_post'] = base_url('read/' . $data_content[0]['id_post'] . '/' . $data_content[0]['seotitle']);
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();
+        $data['users'] = $this->get_user_array($users); 
 
         $data['comments'] = $this->show_tree($code);
         $data['total_comment'] = $this->comment_model->get_total_comment("WHERE id_post='$code'");
+        //LOG ACT POIN 
+        $this->activity_model->insert_act('3',$this->session->userdata('id'));        
 
         //Cari Reaction
         $reaction = $this->blog_model->get_post_reaction("WHERE id_post='$code'")->result_array();
@@ -176,7 +187,6 @@ class Page extends CI_Controller {
             $percent_disappointed = $x_disappointed / $y_disappointed;
         }
         $data['disappointed'] = number_format($percent_disappointed * 100, 2) . '%';
-
 
         //LOAD DATA VIEW
         $html['head']       = $this->load->view('page/head', $data, TRUE);
@@ -325,9 +335,11 @@ class Page extends CI_Controller {
         $data['results'] = isset($post_member) ? $post_member : '';
         //$data['results'] = $this->blog_model->get_post_by_user($id_reg, $per_page, $page);
         $data['pagination'] = $this->pagination($total, $limit, $link);
-        $data['info_user'] = $this->blog_model->get_user("WHERE id_reg='$code'")->result_array();
-        $data['top_profile'] = $this->blog_model->get_user("LIMIT 7 ")->result_array();
+        $data['info_user'] = $this->user_model->get_user("WHERE id_reg='$code'")->result_array();
+        $data['top_profile'] = $this->user_model->get_user("ORDER BY total_poin DESC LIMIT 7")->result_array();
         $data['top_geeq'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY hits DESC LIMIT 5")->result_array();
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();
+        $data['users'] = $this->get_user_array($users); 
 
          //LOAD DATA VIEW
         $html['head'] = $this->load->view('page/head', $data, TRUE);
@@ -381,6 +393,8 @@ class Page extends CI_Controller {
         $data['random_post'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY RAND() LIMIT 5")->result_array();
         $data['latest_new'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' ORDER BY date DESC LIMIT 6")->result_array();
         $data['editorial_pick'] = $this->blog_model->get_post("WHERE active='Y' AND publish <= '$today' AND editorial_pick='Y' ORDER BY date DESC LIMIT 4")->result_array();
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();        
+        $data['users'] = $this->get_user_array($users); 
 
         $data['seo_category'] = $data_cat[0]['seotitle'];
         $data['image_category'] = $data_cat[0]['image'];
@@ -506,6 +520,9 @@ class Page extends CI_Controller {
         $data['results'] = $search_result;
         $data['namakeyword'] = $keyword;
         $data['all_tag'] = $this->blog_model->get_tags()->result_array();
+        
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();        
+        $data['users'] = $this->get_user_array($users); 
 
         //LOAD DATA VIEW
         $html['head'] = $this->load->view('page/head', $data, TRUE);
@@ -520,6 +537,7 @@ class Page extends CI_Controller {
         $today = date('Y-m-d h:i:s');
         $data['datalogin'] = $this->getDataLogin();
         $keyword = $this->input->get('keyword');
+        
         $data['setting'] = $this->web_setting($keyword);
         $data_tags = $this->blog_model->get_tags("WHERE seotitle='$keyword'")->result_array();
         if(empty($data_tags)){
@@ -541,6 +559,9 @@ class Page extends CI_Controller {
         $data['namakeyword'] = $data_tags[0]['name'];
         $data['namtag'] = $nama_tags[0]['name'];
         $data['all_tag'] = $this->blog_model->get_tags()->result_array();
+
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();        
+        $data['users'] = $this->get_user_array($users); 
 
         //LOAD DATA VIEW
         $html['head'] = $this->load->view('page/head', $data, TRUE);
@@ -564,6 +585,9 @@ class Page extends CI_Controller {
         $data['menu'] = $this->blog_model->get_menu()->result_array();
         $data['all_tag'] = $this->blog_model->get_tags()->result_array();
         $data['category'] = $this->blog_model->get_post_category()->result_array();
+        
+        $users = $this->user_model->get_user_col("id,id_reg,email,picture,first_name,last_name,cover,total_poin,username")->result_array();        
+        $data['users'] = $this->get_user_array($users); 
 
         //LOAD DATA VIEW
         $html['head'] = $this->load->view('page/head', $data, TRUE);
@@ -615,5 +639,21 @@ class Page extends CI_Controller {
         }
 
         return $data;        
+    }
+
+
+    function get_user_array($users){
+        foreach ($users as $key => $val) {
+            $data[$val['id_reg']] = array( 'id' =>$val['id'],
+                                                'email' =>$val['email'],
+                                                'picture' =>$val['picture'],
+                                                'first_name' =>$val['first_name'],
+                                                'last_name' =>$val['last_name'],
+                                                'cover' =>$val['cover'],
+                                                'total_poin' =>$val['total_poin'],
+                                                'username' =>$val['username'] );
+        }
+
+        return $data;         
     }
 }

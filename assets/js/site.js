@@ -1,5 +1,14 @@
 //FOR LOGIN FIREBASE
 // Initialize Firebase
+$("#loadingsosmed").hide();    
+$( document ).ajaxStart(function() {
+   $("#loadingsosmed").show();
+});
+
+$(document).ajaxComplete(function(){
+    $("#loadingsosmed").hide();
+});
+
   var config = {
     apiKey: "AIzaSyBM4RX5tRX27Hyf3a0Fy5nrWglVDrYcd_o",
     authDomain: "geeq-5e09c.firebaseapp.com",
@@ -11,6 +20,7 @@
 
 // [START buttoncallback]
 function toggleSignInGoogle() {
+	
   if (!firebase.auth().currentUser) {
     // [START createprovider]
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -40,7 +50,8 @@ function toggleSignInGoogle() {
             dataType : "json",            
             success: function(data)
             {                 
-                //alert(data);
+                //$("#loadingsosmed").show();
+				        //alert(data);
                 if(data.message == 'success') {
                   location.reload();
                 }
@@ -120,7 +131,8 @@ function toggleSignInFacebook() {
             data : formData,
             dataType : "json",            
             success: function(data)
-            {                 
+            {        
+				        //$("#loadingsosmed").show();
                 //alert(data);
                 if(data.message == 'success') {
                   location.reload();

@@ -124,12 +124,13 @@
                                     </div>
                                 </div>
                                 <div class="col s12 bx-comment">
-
-                                    <a class="btn waves-effect waves-light z-depth-0 blue-grey darken-3 btn-comment">
-									<?= $total_comment ?> Komentar
-								  </a>
+                                    <?php if($this->ion_auth->logged_in()){?>
+                                        <a class="btn waves-effect waves-light z-depth-0 blue-grey darken-3 btn-comment">
+                                        <?= $total_comment ?> Komentar
+                                        </a>
 
                                     <div id="bx-comment" style="display:none;">
+
                                         <h5>
                                             Komentar 
                                             <small><?= $total_comment ?> Komentar </small>
@@ -161,6 +162,15 @@
                                         <?php echo $comments; ?>
                                         <hr>    
                                     </div><!--bxcomment-->  
+                                    <?php }else{ ?>
+                                        <a href="#loginmodal" class="btn waves-effect waves-light z-depth-0 blue-grey darken-3">
+                                        <?= $total_comment ?> Komentar (Login untuk komentar)
+                                        </a>
+                                    <?php }?>
+
+
+
+                                
                                 </div>
                             </div>
                         </div>

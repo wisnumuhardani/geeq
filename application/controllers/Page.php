@@ -127,8 +127,11 @@ class Page extends CI_Controller {
 
         $data['comments'] = $this->show_tree($code);
         $data['total_comment'] = $this->comment_model->get_total_comment("WHERE id_post='$code'");
-        //LOG ACT POIN 
-        $this->activity_model->insert_act('3',$this->session->userdata('id'));        
+
+        if($this->ion_auth->logged_in()){
+            //LOG ACT POIN 
+            $this->activity_model->insert_act('2',$this->session->userdata('id'));                    
+        }
 
         //Cari Reaction
         $reaction = $this->blog_model->get_post_reaction("WHERE id_post='$code'")->result_array();
@@ -206,6 +209,10 @@ class Page extends CI_Controller {
             $this->session->set_flashdata('message', validation_errors());
             redirect($_SERVER['HTTP_REFERER']);
         } else {
+            if($this->ion_auth->logged_in()){
+                //LOG ACT POIN 
+                $this->activity_model->insert_act('5',$this->session->userdata('id'));                 
+            }
             $this->comment_model->add_new_comment();
             $this->session->set_flashdata('message', 'Your comment is awaiting moderation.');
             redirect($_SERVER['HTTP_REFERER']);

@@ -5,6 +5,11 @@ if (!defined('BASEPATH')) {
 }
 
 class Reaction extends CI_Controller {
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('activity_model');
+    }
 
     function smile() {
         $id_post = $_POST['id_post'];
@@ -23,6 +28,10 @@ class Reaction extends CI_Controller {
                 );
                 setcookie($id_post, $baseurl, time() + 3600);
                 $this->blog_model->insert_data('post_reaction', $data);
+            }
+            if($this->ion_auth->logged_in()){
+                //LOG ACT POIN 
+                $this->activity_model->insert_act('3',$this->session->userdata('id'));                            
             }
         }
     }
@@ -45,6 +54,11 @@ class Reaction extends CI_Controller {
                 setcookie($id_post, $baseurl, time() + 3600);
                 $this->blog_model->insert_data('post_reaction', $data);
             }
+            if($this->ion_auth->logged_in()){
+                //LOG ACT POIN 
+                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
+            }
+
         }
     }
 
@@ -65,6 +79,10 @@ class Reaction extends CI_Controller {
                 );
                 setcookie($id_post, $baseurl, time() + 3600);
                 $this->blog_model->insert_data('post_reaction', $data);
+            }
+            if($this->ion_auth->logged_in()){
+                //LOG ACT POIN 
+                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
             }
         }
     }
@@ -87,6 +105,10 @@ class Reaction extends CI_Controller {
                 setcookie($id_post, $baseurl, time() + 3600);
                 $this->blog_model->insert_data('post_reaction', $data);
             }
+            if($this->ion_auth->logged_in()){
+                //LOG ACT POIN 
+                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
+            }
         }
     }
 
@@ -107,6 +129,10 @@ class Reaction extends CI_Controller {
                 );
                 setcookie($id_post, $baseurl, time() + 3600);
                 $this->blog_model->insert_data('post_reaction', $data);
+            }
+            if($this->ion_auth->logged_in()){
+                //LOG ACT POIN 
+                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
             }
         }
     }

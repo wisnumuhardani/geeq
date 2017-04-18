@@ -30,8 +30,10 @@ class Reaction extends CI_Controller {
                 $this->blog_model->insert_data('post_reaction', $data);
             }
             if($this->ion_auth->logged_in()){
-                //LOG ACT POIN 
-                $this->activity_model->insert_act('3',$this->session->userdata('id'));                            
+
+                //LOG ACT POIN
+                $user = $this->ion_auth->user()->row(); 
+                $this->activity_model->insert_act('3',$user->id);                            
             }
         }
     }
@@ -55,8 +57,9 @@ class Reaction extends CI_Controller {
                 $this->blog_model->insert_data('post_reaction', $data);
             }
             if($this->ion_auth->logged_in()){
-                //LOG ACT POIN 
-                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
+                //LOG ACT POIN
+                $user = $this->ion_auth->user()->row(); 
+                $this->activity_model->insert_act('3',$user->id);                                        
             }
 
         }
@@ -81,8 +84,9 @@ class Reaction extends CI_Controller {
                 $this->blog_model->insert_data('post_reaction', $data);
             }
             if($this->ion_auth->logged_in()){
-                //LOG ACT POIN 
-                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
+                //LOG ACT POIN
+                $user = $this->ion_auth->user()->row(); 
+                $this->activity_model->insert_act('3',$user->id);                                        
             }
         }
     }
@@ -106,8 +110,9 @@ class Reaction extends CI_Controller {
                 $this->blog_model->insert_data('post_reaction', $data);
             }
             if($this->ion_auth->logged_in()){
-                //LOG ACT POIN 
-                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
+                //LOG ACT POIN
+                $user = $this->ion_auth->user()->row(); 
+                $this->activity_model->insert_act('3',$user->id);                                        
             }
         }
     }
@@ -131,8 +136,9 @@ class Reaction extends CI_Controller {
                 $this->blog_model->insert_data('post_reaction', $data);
             }
             if($this->ion_auth->logged_in()){
-                //LOG ACT POIN 
-                $this->activity_model->insert_act('3',$this->session->userdata('id'));                                        
+                //LOG ACT POIN
+                $user = $this->ion_auth->user()->row(); 
+                $this->activity_model->insert_act('3',$user->id);                                        
             }
         }
     }

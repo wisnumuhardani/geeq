@@ -129,8 +129,8 @@ class Page extends CI_Controller {
         $data['total_comment'] = $this->comment_model->get_total_comment("WHERE id_post='$code'");
 
         if($this->ion_auth->logged_in()){
-            //LOG ACT POIN 
-            $this->activity_model->insert_act('2',$this->session->userdata('id'));                    
+            $user = $this->ion_auth->user()->row();
+            $this->activity_model->insert_act('2',$user->id);                    
         }
 
         //Cari Reaction
@@ -211,7 +211,8 @@ class Page extends CI_Controller {
         } else {
             if($this->ion_auth->logged_in()){
                 //LOG ACT POIN 
-                $this->activity_model->insert_act('5',$this->session->userdata('id'));                 
+                $user = $this->ion_auth->user()->row();            
+                $this->activity_model->insert_act('5',$user->id);                 
             }
             $this->comment_model->add_new_comment();
             $this->session->set_flashdata('message', 'Your comment is awaiting moderation.');

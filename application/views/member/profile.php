@@ -50,10 +50,9 @@
                 <li><a href="<?php echo base_url('my-stories/' . $datalogin['id_reg'] . ''); ?>">My Stories</a></li>
             </ul>
             <div class="bx-scr right">
-				<!--
-                <h3>180 <span>Point</span></h3>
-                <h3>280 <span>Reads (30 Days)</span></h3>
-				-->
+                <h3><?php echo $info_user[0]['total_poin'];?> <span>Point</span></h3>
+                <!--<h3>280 <span>Reads (30 Days)</span></h3>-->
+			
             </div>
             <div class="clearfix"></div>
         </div>
@@ -134,7 +133,7 @@
                         </div>
                         <div class="bx-usr-info">
                             <a href="<?php echo base_url('profile/' . $info_user[0]['id_reg']); ?>">
-                                <img src="<?php echo base_url('assets/member/' . $info_user[0]['id_reg'] . '/thumb/' . $info_user[0]['picture'] . ''); ?>" alt="" class="circle usr-feat left">
+                                <img src="<?php echo base_url('assets/member/' . $info_user[0]['id_reg'] . '/' . $info_user[0]['picture'] . ''); ?>" alt="" class="circle usr-feat left">
                             </a>
                             <div class="auth-date grey-text lighten-5 ">
                                 <span class="auth-feat">

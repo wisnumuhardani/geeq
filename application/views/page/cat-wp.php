@@ -1,7 +1,27 @@
 <div class="blue-grey lighten-3">
     <div class="section container">
+	
+
         <div class="row">
             <div class="col s12 m6 l8">
+				<div class="center lb-ads1">
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://revive.consumedmedia.id/www/delivery/ajs.php':'http://revive.consumedmedia.id/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=70");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=ab7c1f1d&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=70&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ab7c1f1d' border='0' alt='' /></a></noscript>
+
+        </div>
                 <div class="row">
                     <div class="col s12 m6 l6">
                         <div class="bx-title">
@@ -142,7 +162,7 @@
                                             <?php
 
                                                 if (file_exists('assets/member/' . $sport['id_reg'] . '/thumb/' . $users[$sport['id_reg']]['picture'] )) {
-                                                    echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/member/' . $sport['id_reg'] . '/thumb/' . $users[$sport['id_reg']]['picture'] . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/member/' . $sport['id_reg'] . '/' . $users[$sport['id_reg']]['picture'] . '') . '" ></a>';
                                                 } else {
                                                     echo '<a href="' . base_url('profile/' . $sport['id_reg']) . '"><img class="circle usr-feat left" alt="' . $sport['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
@@ -351,7 +371,7 @@
                                             <?php
 
                                                 if (file_exists('assets/member/' . $otomotif['id_reg'] . '/thumb/' . $users[$otomotif['id_reg']]['picture'])) {
-                                                    echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/member/' . $otomotif['id_reg'] . '/thumb/' . $users[$otomotif['id_reg']]['picture']  . '') . '" ></a>';
+                                                    echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/member/' . $otomotif['id_reg'] . '/' . $users[$otomotif['id_reg']]['picture']  . '') . '" ></a>';
                                                 } else {
                                                     echo '<a href="' . base_url('profile/' . $otomotif['id_reg']) . '"><img class="circle usr-feat left" alt="' . $otomotif['id_reg'] . '" src="' . base_url('assets/images/no-foto.jpg') . '"></a>';
                                                 }
@@ -428,7 +448,9 @@
             </div><!--end col8-->
             <div class="col s4 right-top-wp1">
 			   <div class="sc-ads1 center">
-                                        <iframe id='ac47b054' name='ac47b054' src='http://revive.consumedmedia.id/www/delivery/afr.php?zoneid=69&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='300' height='250'><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=ad8ff19e&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=69&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ad8ff19e' border='0' alt='' /></a></iframe>
+   
+<iframe id='a1f5336f' name='a1f5336f' src='http://revive.consumedmedia.id/www/delivery/afr.php?zoneid=71&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='300' height='250'><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=aa7db16a&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=71&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aa7db16a' border='0' alt='' /></a></iframe>
+
                     <!--<img src="<?php echo base_url('assets/banner/mr-300x250.jpeg'); ?>">-->
 
 

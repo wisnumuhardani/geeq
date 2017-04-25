@@ -1,7 +1,29 @@
 <div class="blue-grey lighten-3">
     <div class="section container">
         <div class="row">
+			
+
+
             <div class="col s12 m8 l8">
+<div class="center lb-ads1">
+
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://revive.consumedmedia.id/www/delivery/ajs.php':'http://revive.consumedmedia.id/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=75");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=a76f6af9&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=75&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a76f6af9' border='0' alt='' /></a></noscript>
+
+        </div>
                 <div class="bx-title">
                     <h2 class="stand-title"><span>LATEST NEWS</span></h2>
                 </div>
@@ -15,7 +37,9 @@
             <!--Popular-->		
             <div class="col s4 right-top-wp2">
                 <div class="sc-ads1 center">
-                    <iframe id='ac47b054' name='ac47b054' src='http://revive.consumedmedia.id/www/delivery/afr.php?zoneid=69&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='300' height='250'><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=ad8ff19e&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=69&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ad8ff19e' border='0' alt='' /></a></iframe>
+                   
+<iframe id='ac9324e0' name='ac9324e0' src='http://revive.consumedmedia.id/www/delivery/afr.php?zoneid=72&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='300' height='250'><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=ad242c90&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=72&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ad242c90' border='0' alt='' /></a></iframe>
+
                     <!--<img src="<?php echo base_url('assets/banner/mr-300x250.jpeg'); ?>">-->
                 </div>
                 <ul id="tabs-popular" class="tabs z-depth-1">

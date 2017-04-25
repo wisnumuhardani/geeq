@@ -6,7 +6,6 @@
         <div class="right lb-ads1">
 
 			<iframe id='abade3b9' name='abade3b9' src='http://revive.consumedmedia.id/www/delivery/afr.php?zoneid=68&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='728' height='90'><a href='http://revive.consumedmedia.id/www/delivery/ck.php?n=abd34e44&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://revive.consumedmedia.id/www/delivery/avw.php?zoneid=68&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=abd34e44' border='0' alt='' /></a></iframe>
-			<!--<img src="<?php echo base_url('assets/banner/lb-728x90.jpeg'); ?>">-->
 
         </div>
     </div>
@@ -53,7 +52,7 @@
     </div>
 </nav>
 <!--
-<div id="nav-top" style="display:none;">
+<div id="nav-ontop" style="display:none;">
 <div class="nav-top">
 	<nav class="blue-grey darken-3" role="navigation">
     <div class="nav-wrapper container">
@@ -120,7 +119,7 @@
 </div>
 
 <ul id="dropdown-menuser" class="dropdown-content">
-    <!--<li class="nav-point"><div class="mypoint-nav">My point</div><div class="bx-point-nav right">143</div></li>-->
+    <li class="nav-point"><div class="mypoint-nav">My point</div><div class="bx-point-nav right"><?php echo $info_user[0]['total_poin'];?></div></li>
     <li><a href="<?php echo base_url('write-story/' . $datalogin['id_reg'] . ''); ?>">New Stories</a></li>
     <li><a href="<?php echo base_url('my-stories/' . $datalogin['id_reg'] . ''); ?>">Draft</a></li>
     <li><a href="<?php echo base_url('my-stories/' . $datalogin['id_reg'] . ''); ?>">My Stories</a></li>
